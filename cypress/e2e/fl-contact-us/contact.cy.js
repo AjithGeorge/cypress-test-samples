@@ -17,10 +17,6 @@ describe('FounderAndLighting-ContactUS', () => {
             cy.get('.m-0').should('contain.text', 'Whether you’re a would-be founder, our next superstar looking for a future role, or an investor interested in our model, we’d love to meet you.');
         })
 
-        it('displays re-captcha div', () => {
-            cy.get('iframe[title="reCAPTCHA"]')
-        })
-
         it('displays header-navbar and components', () => {
             cy.get('#navbarNavDropdown').children().first().children().should('have.length', 8)
         })
@@ -30,6 +26,17 @@ describe('FounderAndLighting-ContactUS', () => {
             cy.get('.footer-content').contains('talent@founderandlightning.com ')
             cy.get('.footer-content').contains('Find us on social media.')
 
+        })
+
+        it('has working nav links', () => {
+            cy.get("#navbarNavDropdown").find(".nav-link").each(($el) => {
+                cy.wrap($el).scrollIntoView()
+                    .should("not.have.attr", "href", "#undefined")
+            })
+        })
+
+        it('displays re-captcha div', () => {
+            cy.get('iframe[title="reCAPTCHA"]')
         })
 
     })
@@ -72,7 +79,7 @@ describe('FounderAndLighting-ContactUS', () => {
             cy.get('select[name=how_did_you_hear_about_us_]').should('have.value', selection)
         })
 
-        it('displays warning for form fields when input is not provided', () => {
+        it('displays warning if fields are left blank', () => {
             let count = 0;
             cy.get('input[required=""]').each(($el) => {
                 cy.wrap($el).click()
@@ -106,8 +113,8 @@ describe('FounderAndLighting-ContactUS', () => {
         })
 
         context('input data validations', () => {
-            it('displays warning for invalid email', () => {
-                const invalidEmails = ['123.com', "hello", "123@!@#.com","hey@com@domain"]
+            it('displays validation for invalid email', () => {
+                const invalidEmails = ['123.com', "hello", "123@!@#.com", "hey@com@domain"]
                 for (let email of invalidEmails) {
                     cy.get('input[name=email]').clear()
                     cy.get('input[name=email]').type(email)
@@ -115,7 +122,7 @@ describe('FounderAndLighting-ContactUS', () => {
                 }
             })
 
-            it('displays warning for invalid phone number', () => {
+            it('displays validation for invalid phone number', () => {
                 const invalidPhone = ['qwer123', "!@#456", "PO#-)(*123"]
                 for (let phone of invalidPhone) {
                     cy.get('input[name=mobilephone]').clear()

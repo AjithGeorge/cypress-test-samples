@@ -35,23 +35,24 @@ The solution has, tests and scenarios for the https://www.founderandlightning.co
     
     Scenario: Verifying the Landing Page
     Test cases:
-        Verify the page Title
-        Verify the 'contact us' heading for the landing page
-        Verify the welcome message displayed
+        Verify page title
+        Verify page heading
+        Verify welcome message displayed
         Verify re-captcha is enabled in the page
-        Verify the header and footer for the page
+        Verify header and footer available for the page
+        Verify nav links are working
 
 
     Scenario: Verify the contact form
     Test cases:
-        Verify that all the form fields are available and doesn't have values.
+        Verify that all the form fields are available and doesn't have values by default.
         Verify that values can be input for the different fields
         Verify that warning messages are displayed for left out required fields
         Verify that submit throws error if unresolved warnings are present.
         Verify that submit require captcha validation
-    Note: The test is set till the point of captcha validation.
+    Note: The test is set till the point of captcha validation.(Bypass Not Implemented) Test is supposed to fail on CLI execution.
 
-    Scenario: Verify data validations available for forms field
+    Scenario: Form input validations
     Test cases:
         Verify that email accepts only valid inputs
         Verify that phone number accepts only valid inputs
@@ -63,6 +64,6 @@ All the test code is available in the `/e2e/fl-contact-us/contact.cy.js` file.
 Project is configured with an html reporter -[cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter).
 If the cli command is used with the reporter tag then the report and associated files will be generated automatically.
 
-`cypress run --reporter cypress-mochawesome-reporter`
+Example: `cypress run --reporter cypress-mochawesome-reporter`
 
 A sample report is also attached for reference.(Report is available inside cypress/reports)

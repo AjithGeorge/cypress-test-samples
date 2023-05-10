@@ -106,7 +106,7 @@ describe('FounderAndLighting-ContactUS', () => {
         })
 
         context('input data validations', () => {
-            it.only('displays warning for invalid email', () => {
+            it('displays warning for invalid email', () => {
                 const invalidEmails = ['123.com', "hello", "123@!@#.com","hey@com@domain"]
                 for (let email of invalidEmails) {
                     cy.get('input[name=email]').clear()
@@ -115,7 +115,7 @@ describe('FounderAndLighting-ContactUS', () => {
                 }
             })
 
-            it.only('displays warning for invalid phone number', () => {
+            it('displays warning for invalid phone number', () => {
                 const invalidPhone = ['qwer123', "!@#456", "PO#-)(*123"]
                 for (let phone of invalidPhone) {
                     cy.get('input[name=mobilephone]').clear()

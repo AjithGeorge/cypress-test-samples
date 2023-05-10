@@ -22,10 +22,10 @@ describe('FounderAndLighting-ContactUS', () => {
         })
 
         it('displays header-navbar and components', () => {
-            cy.get('#navbarNavDropdown').children().first().children().should('have.length',8)
+            cy.get('#navbarNavDropdown').children().first().children().should('have.length', 8)
         })
 
-        it('displays footer with details',()=>{
+        it('displays footer with details', () => {
             cy.get('.footer-content').contains('hello@founderandlightning.com')
             cy.get('.footer-content').contains('talent@founderandlightning.com ')
             cy.get('.footer-content').contains('Find us on social media.')
@@ -78,14 +78,12 @@ describe('FounderAndLighting-ContactUS', () => {
                 cy.wrap($el).click()
                 cy.get('.hs-main-font-element').should('have.length', count)
                 count++
-
             })
             cy.get('textarea[name=message]').click()
             cy.get('.m-0').click()
             cy.get('.hs-main-font-element').each(($el) => {
                 cy.wrap($el).should('have.text', 'Please complete this required field.')
             })
-
             cy.get('.hs-main-font-element').should('have.length', 5)
 
         })
@@ -105,6 +103,26 @@ describe('FounderAndLighting-ContactUS', () => {
             cy.contains('Send Message >').click()
             cy.contains('Failed to validate Captcha. Please try again.')
 
+        })
+
+        context('input data validations', () => {
+            it.only('displays warning for invalid email', () => {
+                const invalidEmails = ['123.com', "hello", "123@!@#.com","hey@com@domain"]
+                for (let email of invalidEmails) {
+                    cy.get('input[name=email]').clear()
+                    cy.get('input[name=email]').type(email)
+                    cy.contains('Email must be formatted correctly.')
+                }
+            })
+
+            it.only('displays warning for invalid phone number', () => {
+                const invalidPhone = ['qwer123', "!@#456", "PO#-)(*123"]
+                for (let phone of invalidPhone) {
+                    cy.get('input[name=mobilephone]').clear()
+                    cy.get('input[name=mobilephone]').type(email)
+                    cy.contains('Must contain only numbers, +()-. and x.')
+                }
+            })
         })
 
     })

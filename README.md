@@ -33,34 +33,28 @@ This should start the execution of the test scripts.
 The solution has, tests and scenarios for the https://www.founderandlightning.com/contact page
 
     
-    Scenario: Retrieve a list of all objects
-    Test case:
-        Send a GET request to https://api.restful-api.dev/objects
-        Verify that the response status code is 200 OK
-        Verify that the response contains a JSON array of objects
-        Verify that each object has the expected properties [Schema Validation] (e.g. "id", "name", "data")
-    
-    GET /objects/:ids
+    Scenario: Verifying the Landing Page
+    Test cases:
+        Verify the page Title
+        Verify the 'contact us' heading for the landing page
+        Verify the welcome message displayed
+        Verify re-captcha is enabled in the page
+        Verify the header and footer for the page
 
-    Scenario: Retrieve a specific object by ID/IDs
-    Test case:
-        Send a GET request to https://api.restful-api.dev/objects/:id (replace ":id" with the ID/IDs of an existing object)
-        Verify that the response status code is 200 OK
-        Verify that the response contains the requested number of json objects (Count should match the requested number of Id/Ids)
-        Verify that the response contains only the requested ID/IDs
-        Verify that the each object has the expected properties [Schema Validation] (e.g. "id", "name", "data")
-Assertions using [Chai Assertion Library](https://www.chaijs.com/api/)
+
+    Scenario: Verify the contact form
+    Test cases:
+        Verify that all the form fields are available and doesn't have values.
+        Verify that values can be input for the different fields
+        Verify that warning messages are displayed for left out required fields
+        Verify that submit throws error if unresolved warnings are present.
+        Verify that submit require captcha validation
+
 
 ## Explanation:
-All the test code is available in the `SampleCollection.json` file. This alone should suffice for running from postman application.
+All the test code is available in the `/e2e/fl-contact-us/contact.cy.js` file. 
 
-The `runner.js` file is to customize the newman runner and to extend some of its capabilities.
+Project is configure with an html reporter -[cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter).
+If the cli command is used with the reporter tag then the report and associated files will be generated automatically.
 
-The setup has an html reporting enabled by default [htmlextra], also a retry mechanism(for failed tests) is added, all of which can be configured from the `runner.js` file.
-
-Once the tests are run through the `runner.js` file, the html report will be generated in the newman folder.
-By default, the retry for failed test are enabled and the iteration count is set to 3.
-
-Retry Mechanism - If enabled(default), will re trigger a run of the failed tests and will generate a new report(Could be useful when testing with dynamic data).
-
-A sample report is also attached for reference.(Report is available inside /newman)
+A sample report is also attached for reference.(Report is available inside /reports)

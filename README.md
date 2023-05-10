@@ -49,6 +49,7 @@ The solution has, tests and scenarios for the https://www.founderandlightning.co
         Verify that warning messages are displayed for left out required fields
         Verify that submit throws error if unresolved warnings are present.
         Verify that submit require captcha validation
+    Note: The test is set till the point of captcha validation.
 
 
 ## Explanation:

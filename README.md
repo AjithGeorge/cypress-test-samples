@@ -51,11 +51,18 @@ The solution has, tests and scenarios for the https://www.founderandlightning.co
         Verify that submit require captcha validation
     Note: The test is set till the point of captcha validation.
 
+    Scenario: Verify data validations available for forms field
+    Test cases:
+        Verify that email accepts only valid inputs
+        Verify that phone number accepts only valid inputs
+
 
 ## Explanation:
 All the test code is available in the `/e2e/fl-contact-us/contact.cy.js` file. 
 
-Project is configure with an html reporter -[cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter).
+Project is configured with an html reporter -[cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter).
 If the cli command is used with the reporter tag then the report and associated files will be generated automatically.
 
-A sample report is also attached for reference.(Report is available inside /reports)
+`cypress run --reporter cypress-mochawesome-reporter`
+
+A sample report is also attached for reference.(Report is available inside cypress/reports)

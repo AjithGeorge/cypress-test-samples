@@ -1,0 +1,10 @@
+{
+  "user": {
+    "firstname": "John",
+    "lastname": "doe",
+    "email": "johndoe@domain.com",
+    "phone": "+123-456789",
+    "selection": "Other",
+    "message": "Sample Message for the contact form"
+  }
+}

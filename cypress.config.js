@@ -7,7 +7,7 @@ module.exports = defineConfig({
         reportPageTitle: 'cypress-test-sample',
         embeddedScreenshots: true,
         inlineAssets: true,
-        saveAllAttempts: false
+        saveAllAttempts: false,
     },
 
     e2e: {
